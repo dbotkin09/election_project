@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>danrobotkin</title>
+</head>
+
+<body>
+<div id="container">
+		<div id="mainpic">
+        	<h1>Tile Pattern<span class="lightblue"> Calculator</span></h1>
+            	
+        </div>   
+        
+        <div id="menu">
+        	<ul>
+            	<li class="menuitem">
+            	<a href="http://danrobotkin.com/index.html">Home</a></li>
+                <li class="menuitem">
+                <a href="http://danrobotkin.com/Tile Pattern Calculator.html">Tile Pattern Calculator</a></li>
+                <li class="menuitem"><a href="http://danrobotkin.com/Price Deflator.html">Price Deflator</a></li>
+                <li class="menuitem"><a href="http://danrobotkin.com/music.html">Music</a></li>
+                <li class="menuitem"><a href="http://danrobotkin.com/blog.html">Blog</a></li>
+              <li class="menuitem"><a href="http://danrobotkin.com/Resume.html">Contact and Resume</a></li>
+            </ul>
+        </div>
+        
+		<div id="content">
+        	<h2>Pattern Calculator </h2>
+        	<br>
+        	<br>
+        	<form class="cart" id="calculator">
+        	
+        		<div class="pattern_sheet">
+        			<label for="pattern">Pattern</label>
+        			<select id="pattern">
+        			<option value> - select - </option>
+        			<option value="SA"> Savannah </option>
+        			<option value="CH"> Charleston </option>
+        			<option value="HI"> Hilton </option>
+        			<option value="KI"> Kiawah </option>
+        			<option value="KG"> Kingsman </option>
+        			<option value="JA"> Jarvis </option>
+        			<option value="VA"> Vashon </option>
+        			<option value="MC"> Mackinac </option>
+        			<option value="PW"> Pinwheel </option>
+        			<option value="TS"> Top Sail </option>
+        			<option value="WN"> Wilmington </option>
+        			<option value="SC"> Seacrest </option>
+        			<option value="CA"> Catalina </option>
+        			<option value="NA"> Nantucket </option>
+        			<option value="KO"> Kodiak </option>
+        			<option value="VE"> Versailles </option>
+        			<option value="BW"> Brunswick </option>
+        			</select>
+        		</div>
+        		<br>
+        		<br>
+        		<br>
+        		<div class = "length">
+        			<label for="l">What is the length of the surface?</label>
+        			<input type = "number" step="0.01" id = "l" size = "3" placeholder = "0" required>
+        			<br>
+        			<br>
+        			<input type="radio" name="complete" value="12" id="l2" required>
+        			<label for"l2">inches</label>
+        			<br>
+        			<input type="radio" name="complete" value="1" id="l3">
+        			<label for="l3">feet</label>
+        		</div>
+        		<br>
+        		<br>
+        		<div class = "width">
+        			<label for="w">What is the width of the surface?</label>
+        			<input type = "number" step="0.01" id = "w" size = "3" placeholder = "0" required>
+        			<br>
+        			<br>
+        			<input type="radio" name="complete2" value="12" id="w2" required>
+        			<label for"w2">inches</label>
+        			<br>
+        			<input type="radio" name="complete2" value="1" id="w3">
+        			<label for="w3">feet</label>
+        		</div>
+        		<br>
+        		<br>
+        		<div class = "estimate">
+        			<label for="e">Click to estimate:</label>
+        			<input type="submit" value="Estimate Total" id="do it">
+        			<input type="text" id="text element" placeholder = "0 sqft">
+        		</div>	
+        		<br>
+        	        <div id="results"> </div>
+        	</form>
+            	</h2>
+         	</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+            
+            <div id="footer">
+            	<h3>
+            		<a href="http://www.bryantsmith.com">florida web design</a>
+            	</h3>
+            </div>
+      </div>
+   </div>
+   <script type ="text/javascript">
+   "use strict";
+   
+   document.getElementById('calculator').addEventListener( "submit", estimateTotal, false);
+   
+   function estimateTotal(event) {
+   	event.preventDefault();
+	
+   var lgth =  parseFloat(document.getElementById('l').value, 10) || 0;
+   
+   var wdth = parseFloat(document.getElementById('w').value, 10) || 0;
+   
+   var select = document.getElementById('pattern').value;
+   
+   var radio = document.getElementById('calculator').complete;
+   	for (var i = 0; i < radio.length; i++) {
+   	if (radio[i].checked == true){
+   	var lgth = lgth / radio[i].value;
+   	}
+   	}
+   var radio2 = document.getElementById('calculator').complete2;
+   	for (var i = 0; i < radio2.length; i++) {
+   	if (radio2[i].checked == true){
+   	var wdth = wdth / radio2[i].value;
+   	}
+   	}
+   	
+   var sqft = lgth * wdth
+   
+   
+   
+   document.getElementById('text element').value = sqft.toFixed(2) + ' sqft';
+   
+
+      switch (select) {
+   	case 'SA' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.6/1.5) + ' 12x18s and ' + Math.ceil(sqft*.4) + ' 12x12s'  ;
+   		break;
+   case 'CH' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.2/.25) + ' 6x6s and ' + Math.ceil(sqft*.8) + ' 12x12s'  ;
+   		break;
+   case 'HI' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.6/2.25) + ' 18x18s and ' + Math.ceil(sqft*.1/.25) + ' 6x6s'  ;
+   		break;
+   case 'KI' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.692/2.25) + ' 18x18s and ' + Math.ceil(sqft*.308) + ' 12x12s'  ;
+   		break;
+   case 'KG' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.9/2.25) + ' 18x18s and ' + Math.ceil(sqft*.1/.25) + ' 6x6s'  ;
+   		break;
+   case 'JA' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.444) + ' 12x12s, ' + Math.ceil(sqft*.444/.5) + ' 6x12s and ' + Math.ceil(sqft*.112/.25) + ' 6x6s';
+   		break;
+   case 'VA' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.36/2.25) + ' 18x18s, ' + Math.ceil(sqft*.48/1.5) + ' 12x18s and ' + Math.ceil(sqft*.16) + ' 12x12s';
+   		break;
+   case 'MC' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.36/2.25) + ' 18x18s, ' + Math.ceil(sqft*.48/.25) + ' 6x6s and ' + Math.ceil(sqft*.16) + ' 12x12s';
+   		break;
+   case 'PW' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.25/.25) + ' 6x6s, ' + Math.ceil(sqft) + ' 6x12s and ' + Math.ceil(sqft*.25) + ' 12x12s';
+   		break;
+   case 'TS' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.25/.25) + ' 6x6s, ' + Math.ceil(sqft*.5/2) + ' 12x24s and ' + Math.ceil(sqft*.25) + ' 12x12s';
+   		break;
+   case 'WN' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.1/.25) + ' 6x6s, ' + Math.ceil(sqft*.3/.5) + ' 6x12s and ' + Math.ceil(sqft*.6) + ' 12x12s';
+   		break;
+   case 'SC' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.143/.25) + ' 6x6s, ' + Math.ceil(sqft*.286/.5) + ' 6x12s and ' + Math.ceil(sqft*.571) + ' 12x12s';
+   		break;
+   case 'CA' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.143/.25) + ' 6x6s, ' + Math.ceil(sqft*.286/.5) + ' 6x12s and ' + Math.ceil(sqft*.571) + ' 12x12s';
+   		break;
+   case 'NA' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.05/.25) + ' 6x6s, ' + Math.ceil(sqft*.2/.5) + ' 6x12s, ' + Math.ceil(sqft*.3/1.5) + ' 12x18s and ' + Math.ceil(sqft*.45) + ' 12x12s';
+   		break;
+   case 'KO' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.1/.25) + ' 6x6s, ' + Math.ceil(sqft*.2/.5) + ' 6x12s, ' + Math.ceil(sqft*.3/1.5) + ' 12x18s and ' + Math.ceil(sqft*.4) + ' 12x12s';
+   		break;
+   case 'VE' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.11/.25) + ' 6x6s, ' + Math.ceil(sqft*.11/.5) + ' 6x12s, ' + Math.ceil(sqft*.34/1.5) + ' 12x18s and ' + Math.ceil(sqft*.44) + ' 12x12s';
+   		break;
+   case 'BW' :
+   		document.getElementById('results').innerHTML = 'You will need: ' + Math.ceil(sqft*.11/.444) + ' 8x8s, ' + Math.ceil(sqft*.44/1.78) + ' 16x16s, ' + Math.ceil(sqft*.11/.889) + ' 8x16s and ' + Math.ceil(sqft*.34/2.667) + ' 16x24s';
+   		break;
+   		
+ }
+
+
+   }
+   </script>
+</body>
+</html>

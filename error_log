@@ -1,0 +1,5 @@
+[14-Sep-2016 05:46:55 UTC] PHP Fatal error:  Call to undefined function mysql__select_db() in /home/dano/public_html/test.php on line 11
+[14-Sep-2016 05:49:40 UTC] PHP Fatal error:  Call to undefined function mysql__select_db() in /home/dano/public_html/test.php on line 11
+[14-Sep-2016 05:49:42 UTC] PHP Fatal error:  Call to undefined function mysql__select_db() in /home/dano/public_html/test.php on line 11
+[14-Sep-2016 05:51:03 UTC] PHP Fatal error:  Call to undefined function mysql__select_db() in /home/dano/public_html/test.php on line 11
+[14-Sep-2016 05:51:05 UTC] PHP Fatal error:  Call to undefined function mysql__select_db() in /home/dano/public_html/test.php on line 11
